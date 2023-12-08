@@ -2,8 +2,14 @@ def save_applicant_data(source, output):
     with open(output, "w") as fh:
         res = []
         for abi in source:
+            line = ""
             line_list = abi.values()
-            line = ",".join(line_list)
+            for l in line_list:
+                if line == "":
+                    line = str(l)
+                else:
+                    line = line + "," + str(l)
+            line = line + "\n"
             res.append(line)
         fh.writelines(res)
 
